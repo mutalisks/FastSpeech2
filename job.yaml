@@ -1,0 +1,16 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+code: D:/desoul/test/fastSpeech/FastSpeech2
+command: >-
+  python3 train.py 
+  -p config/LJSpeech/preprocess.yaml 
+  -m config/LJSpeech/model.yaml 
+  -t config/LJSpeech/train.yaml
+environment: 
+  $schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+  name: docker-environment
+  build:
+    path: D:/desoul/test/fastSpeech/FastSpeech2/requirements
+compute: azureml:fastSpeech-GPU
+display_name: test-fastspeech
+experiment_name: test-fastspeech
+description: Train a model in fastspeech.
